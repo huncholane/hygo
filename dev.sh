@@ -14,6 +14,16 @@ set -a
 source .env
 set +a
 
+function get_to_root () {
+    for i in $(seq 1 5); do
+        if test -f dev.sh; then
+            break
+        else
+            cd ..
+        fi
+    done
+}
+
 
 function dev () {
     # tunnel the server
@@ -42,4 +52,23 @@ function gcom () {
     local message=$@
     oecho "$message"
     git add . && git commit -m "$message"
+}
+
+function vsource () {
+    start=`pwd`
+    get_to_root
+    source venv/**/activate
+    cd $start
+}
+
+function dj () {
+    start=`pwd`
+    get_to_root
+    cd backend
+    python manage.py $@
+    cd $start
+}
+
+function djsecret() {
+    dj createsecret
 }
