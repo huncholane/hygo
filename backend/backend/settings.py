@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_user_agents',
     'rest_framework',
-
+    'backend',
 ]
 
 MIDDLEWARE = [
