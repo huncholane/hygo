@@ -14,5 +14,6 @@ urlpatterns = [
     path('queue', views.queue),
     path('me/playlsits', playlists.playlists),
     path('me/playlists/playlist', playlists.playlist),
-    path('auth/', include('knox.urls'))
+    path('auth/', include('knox.urls')),
+    path('user/', include('api.user.urls'))
 ]
