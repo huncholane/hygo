@@ -28,18 +28,7 @@ function get_to_root () {
 function dev () {
     # tunnel the server
     local start=`pwd`
-    for i in $(seq 1 5); do
-        if test -f dev.sh; then
-            break
-        else
-            cd ..
-        fi
-    done
-    if ! test -f dev.sh; then
-        echo "Could not find dev.sh"
-        cd $start
-        return
-    fi
+    get_to_root
     ssh -R $TUNNEL_PORT:localhost:$NGINX_PORT $TUNNEL_HOST -N &
 
     docker compose -f dev-compose.yml up -d 2> /dev/null

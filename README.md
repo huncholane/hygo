@@ -59,3 +59,5 @@ The dev.sh file has some handy functions
   - Finds the manage.py file and runs the rest of the argumanets
 - `djs`: Shortcut to start the backend server
 - `djsecret`: Creates a new django secret key
+
+![Cool AI Picture](https://cdn.discordapp.com/attachments/1071695170610925638/1076982838148223137/huncholane_ghost_hacker_21d6f9b3-a6b6-45fe-939d-9d6769a4e672.png)
