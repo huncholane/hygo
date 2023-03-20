@@ -61,3 +61,11 @@ function dj () {
 function djsecret() {
     dj createsecret
 }
+
+function preq () {
+    local start=`pwd`
+    get_to_root
+    cd backend
+    pip install -r requirements.txt
+    cd $start
+}

@@ -1,6 +1,10 @@
+"""
+Knox Urls
+https://james1345.github.io/django-rest-knox/urls/
+"""
 from . import views, charts, public_playlsits
 from .me import playlists
-from django.urls import path
+from django.urls import path, include
 
 
 urlpatterns = [
@@ -9,5 +13,6 @@ urlpatterns = [
     path('charts/unpopular', charts.unpopular),
     path('queue', views.queue),
     path('me/playlsits', playlists.playlists),
-    path('me/playlists/playlist', playlists.playlist)
+    path('me/playlists/playlist', playlists.playlist),
+    path('auth/', include('knox.urls'))
 ]

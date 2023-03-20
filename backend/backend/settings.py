@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import datetime as dt
 import os
 from pathlib import Path
 
@@ -27,7 +28,8 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 CSRF_COOKIE_SECURE = True
-CSRF_TRUSTED_ORIGINS = ['https://ghostsystems.io', 'https://127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://ghostsystems.io',
+                        'https://127.0.0.1', 'https://localhost']
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'django_user_agents',
     'rest_framework',
     'backend',
+    'knox'
 ]
 
 MIDDLEWARE = [
@@ -85,6 +88,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+# Rest Framework
+# https://www.django-rest-framework.org/api-guide/settings/
+# https://james1345.github.io/django-rest-knox/installation/
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'knox.auth.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ]
+}
+
+# Knox Settings
+# https://james1345.github.io/django-rest-knox/settings/
+REST_KNOX = {
+    'TOKEN_TTL': dt.timedelta(days=1),
+    'AUTO_REFRESH': True,
+    'AUTH_HEADER_PREFIX': 'Bearer',
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
