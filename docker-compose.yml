@@ -1,0 +1,9 @@
+services:
+  web:
+    build: .
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+      - ./backend:/backend
+      - ./nginx:/etc/nginx
+    ports:
+      - "${NGINX_PORT}:80"

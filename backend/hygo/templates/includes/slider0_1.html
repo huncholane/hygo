@@ -1,0 +1,19 @@
+{% load static %}
+<div class="wrapper">
+    <div class="values">
+        <span id="range1">
+            0
+        </span>
+        <span> &dash; </span>
+        <span id="range2">
+            100
+        </span>
+    </div>
+    <div class="slider-container">
+        <div class="slider-track"></div>
+        <input type="range" min="0" max="1" value="0" step=".01" id="slider-1" oninput="slideOne()">
+        <input type="range" min="0" max="1" value="1" step=".01" id="slider-2" oninput="slideTwo()">
+    </div>
+</div>
+
+<!--Script-->

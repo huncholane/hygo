@@ -1,0 +1,26 @@
+{% include 'includes/header.html' %}
+{% include 'includes/navbar.html' %}
+{% load static %}
+<table class="table">
+<thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">User</th>
+        <th scope="col">Playlist Name</th>
+        <th scope="col">Playlist Desc</th>
+        <th scope="col">Num Followers</th>
+    </tr>
+</thead>
+{% for playlist in playlists %}
+<tbody>
+    <tr>
+        <td>{{playlist.rank}}</td>
+        <td>{{playlist.username}}</td>
+        <td><a href="{{playlist.playlist_uri}}">{{playlist.name}}</a></td>
+        <td>{{playlist.desc}}</td>
+        <td>{{playlist.followers}}</td>
+    </tr>
+</tbody>
+{% endfor %}
+</table>
+{% include 'includes/mobile-nav.html' %}

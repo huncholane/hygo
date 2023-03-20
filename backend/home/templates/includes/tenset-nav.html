@@ -1,0 +1,73 @@
+{% if not request.user_agent.is_mobile %}
+<main>
+  <div data-reach-accordion="">
+    <div class="fixed z-[100] h-[5rem] w-full transition-all duration-500 ease-out backdrop-blur-lg "></div>
+    <nav class="fixed z-[100] h-[5rem] w-full transition-all duration-500 ease-out py-4 capitalize text-pink">
+      <div
+        class="container relative mx-auto flex max-w-screen-2xl items-center justify-between px-5 text-xs font-semibold lg:px-40">
+        <div class="flex flex-row justify-center gap-x-8 xl:gap-x-16"><a aria-current="page"
+            class="z-50 focus:text-white focus:outline-none active" href="/"><svg
+              class="hidden fill-current hover:fill-white md:block" id="Component_58_39" data-name="Component 58 – 39"
+              xmlns="http://www.w3.org/2000/svg" width="35.311" height="47.148" viewBox="0 0 35.311 47.148">
+              <path id="Path_1254" data-name="Path 1254"
+                d="M100.373,206.758h0l1.555-1.556a1.5,1.5,0,0,0,0-2.114L94.045,195.2a1.5,1.5,0,0,0-2.115,0l-7.884,7.884a1.5,1.5,0,0,0,0,2.114l1.555,1.556h0v12.795h0l-1.555,1.556a1.5,1.5,0,0,0,0,2.114l7.884,7.884a1.5,1.5,0,0,0,2.115,0l7.884-7.884a1.5,1.5,0,0,0,0-2.114l-1.555-1.556h0V206.758ZM95.954,213v5.969a1.5,1.5,0,0,1-.438,1.057l-2.529,2.529-2.529-2.529a1.5,1.5,0,0,1-.438-1.057V207.348a1.5,1.5,0,0,1,.438-1.057l2.529-2.529,2.529,2.529a1.5,1.5,0,0,1,.438,1.057Z"
+                transform="translate(-75.332 -184.398)"></path>
+              <path id="Path_1255" data-name="Path 1255"
+                d="M84.062,159.265l-7.175-7.175a1.5,1.5,0,0,0-2.115,0l-.927.927a1.5,1.5,0,0,1-1.057.438H60.9a1.5,1.5,0,0,1-1.057-.438l-.927-.927a1.5,1.5,0,0,0-2.115,0l-7.175,7.175a1.5,1.5,0,0,0,0,2.115l2.694,2.694a1.5,1.5,0,0,0,2.115,0l5.761-5.761a1.5,1.5,0,0,1,1.057-.438h11.18a1.5,1.5,0,0,1,1.057.438l5.761,5.761a1.5,1.5,0,0,0,2.115,0l2.694-2.694A1.5,1.5,0,0,0,84.062,159.265Z"
+                transform="translate(-49.189 -151.652)"></path>
+            </svg><svg class="fill-current hover:fill-white md:hidden" xmlns="http://www.w3.org/2000/svg"
+              width="112.808" height="45.42" viewBox="0 0 112.808 45.42">
+              <g id="Group_405" data-name="Group 405" transform="translate(-8.837 -24.132)">
+                <g id="Group_406" data-name="Group 406" transform="translate(8.837 24.132)">
+                  <path id="Path_1500" data-name="Path 1500"
+                    d="M50.125,54.667h0l1.457-1.5a1.47,1.47,0,0,0,0-2.037L44.2,43.535a1.374,1.374,0,0,0-1.981,0L34.83,51.13a1.469,1.469,0,0,0,0,2.037l1.457,1.5h0V66.993h0l-1.457,1.5a1.469,1.469,0,0,0,0,2.037l7.386,7.595a1.374,1.374,0,0,0,1.981,0l7.386-7.595a1.47,1.47,0,0,0,0-2.037l-1.457-1.5h0V54.667Zm-4.139,6.008v5.75a1.461,1.461,0,0,1-.41,1.019L43.206,69.88l-2.37-2.436a1.461,1.461,0,0,1-.41-1.019V55.235a1.461,1.461,0,0,1,.41-1.019l2.37-2.436,2.369,2.436a1.461,1.461,0,0,1,.41,1.019Z"
+                    transform="translate(-26.666 -33.127)"></path>
+                  <path id="Path_1501" data-name="Path 1501"
+                    d="M32.67,7.334,25.948.422a1.373,1.373,0,0,0-1.981,0l-.868.893a1.382,1.382,0,0,1-.99.422H10.972a1.382,1.382,0,0,1-.99-.422L9.113.422a1.373,1.373,0,0,0-1.981,0L.411,7.334a1.469,1.469,0,0,0,0,2.037l2.524,2.6a1.373,1.373,0,0,0,1.981,0l5.4-5.55a1.382,1.382,0,0,1,.99-.422H21.777a1.382,1.382,0,0,1,.99.422l5.4,5.55a1.373,1.373,0,0,0,1.981,0l2.524-2.6a1.47,1.47,0,0,0,0-2.037"
+                    transform="translate(0 0)"></path>
+                  <path id="Path_1502" data-name="Path 1502"
+                    d="M234.253,87.068,228.432,74.94H225.4v25.208h3.031V81.982l5.821,12.128v6.038h3.031V74.94h-3.031Z"
+                    transform="translate(-163.516 -61.743)"></path>
+                  <path id="Path_1503" data-name="Path 1503"
+                    d="M141.681,74.94h-4.1v2.713h4.1v22.5h3.031v-22.5h4.1V74.94h-7.128Z"
+                    transform="translate(-101.107 -61.743)"></path>
+                  <path id="Path_1504" data-name="Path 1504"
+                    d="M183.474,74.94v25.208h9.13V97.436h-6.1V88.9H192.3V86.188H186.5V77.652h6.1V74.94h-9.13Z"
+                    transform="translate(-133.72 -61.743)"></path>
+                  <path id="Path_1505" data-name="Path 1505" d="M373.827,74.94H362.6v2.713h4.1v22.5h3.031v-22.5h4.1Z"
+                    transform="translate(-261.019 -61.743)"></path>
+                  <path id="Path_1506" data-name="Path 1506"
+                    d="M327.353,74.94v25.208h9.13V97.436h-6.1V88.9h5.791V86.188h-5.791V77.652h6.1V74.94h-9.13Z"
+                    transform="translate(-235.969 -61.743)"></path>
+                  <path id="Path_1507" data-name="Path 1507"
+                    d="M285.371,74.248h-4.877a3.138,3.138,0,0,0-3.09,3.177v5.591a3.2,3.2,0,0,0,1.338,2.617l6.658,4.71a.053.053,0,0,1,.022.043v6.3a.052.052,0,0,1-.052.053h-4.877a.052.052,0,0,1-.051-.053v-6.4H277.4v6.4a3.137,3.137,0,0,0,3.09,3.177h4.877a3.137,3.137,0,0,0,3.09-3.177v-6.3a3.2,3.2,0,0,0-1.338-2.617l-6.657-4.71a.053.053,0,0,1-.022-.044V77.425a.052.052,0,0,1,.051-.053h4.877a.052.052,0,0,1,.052.053v6.11h3.038v-6.11a3.138,3.138,0,0,0-3.09-3.177"
+                    transform="translate(-200.472 -61.257)"></path>
+                </g>
+              </g>
+            </svg></a>
+          <ul class="hidden flex-row items-center gap-x-8 md:flex xl:gap-x-16" role="menu">
+            <li class="group relative select-none transition-transform duration-500 translate-x-full md:translate-x-0"
+              style="transition-delay:20ms"><a href="/"
+                class="desktop:hover:text-white desktop:focus:text-white desktop:focus:outline-none py-2 block font-semibold"
+                target="" rel="noreferrer">Home</a></li>
+            {% if account %}
+            <li class="group relative select-none transition-transform duration-500 translate-x-full md:translate-x-0"
+              style="transition-delay:20ms"><a href="/charts"
+                class="desktop:hover:text-white desktop:focus:text-white desktop:focus:outline-none py-2 block font-semibold"
+                target="" rel="noreferrer">Charts</a></li>
+            <li class="group relative select-none transition-transform duration-500 translate-x-full md:translate-x-0"
+              style="transition-delay:20ms"><a href="/arbs"
+                class="desktop:hover:text-white desktop:focus:text-white desktop:focus:outline-none py-2 block font-semibold"
+                target="" rel="noreferrer">Arbs</a></li>
+            {% endif %}
+            <li class="group relative select-none transition-transform duration-500 translate-x-full md:translate-x-0"
+              style="transition-delay:20ms"><a href="/login"
+                class="desktop:hover:text-white desktop:focus:text-white desktop:focus:outline-none py-2 block font-semibold"
+                target="" rel="noreferrer">{% if account %}Welcome {{account}}{% else %}Login{% endif %}</a></li>
+          </ul>
+      </div>
+    </nav>
+  </div>
+</main>
+<br><br><br><br>
+{% endif %}

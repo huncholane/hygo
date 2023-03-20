@@ -1,0 +1,6 @@
+django
+django_user_agents
+psycopg2-binary
+spotipy
+djangorestframework
+django-filter

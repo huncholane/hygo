@@ -1,0 +1,7 @@
+{% extends 'charts/index.html' %}
+{% block title %}Bottom 50{% endblock title %}
+{% block subtitle %}Songs Listened By Few{% endblock subtitle %}
+{% load static %}
+{% block source %}
+{% static 'api/public/charts/unpopular.js' %}
+{% endblock  %}

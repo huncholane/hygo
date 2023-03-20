@@ -1,0 +1,72 @@
+{% include 'includes/header.html' %}
+{% include 'includes/navbar.html' %}
+{% load static %}
+{% if account.access_level >= 0 %}
+{% if needs_auth %}
+<div class="d-flex justify-content-center">
+  <form action="" method="post">
+    {%csrf_token%}
+    <button type="submit" class="btn btn-primary">Authorize</button>
+  </form>
+</div>
+{% else %}
+
+{% if home %}
+
+<div class="row">
+<a href="./manage" class="col"><button type="button" class="w-100 btn btn-primary">Manage Mine</button></a>
+<a href="./playlistboard" class="col"><button type="button" class="w-100 btn btn-primary">Playlist Leaderboard</button></a>
+<a href="./game" class="col"><button type="button" class="w-100 btn btn-primary">Game Mode</button></a>
+</div>
+<br>
+<h4 class="text-center">Top 50 Songs</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Song</th>
+      <th scope="col">Play Count</th>
+      <th scope="col">Skip Count</th>
+      <th scope="col">User Count</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for song in songs %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td><img src="{{song.image}}" alt="{{song.name}}">  <a href="{{song.song_uri}}" target="_blank">{{song.name}}</a> - {{song.artist}}</td>
+      <td>{{song.num_plays}}</td>
+      <td>{{song.num_skips}}</td>
+      <td>{{song.num_users}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% if settings %}
+<form action="settings" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col">Acousticness: <input type="range" name="Acousticness" class="multi-range multi" min="0" max="1" step="any"></div>
+  </div>
+  <div class="row"></div>
+    <div class="col">Danceability: <input type="range" name="Danceability" class="multi-range" min="0" max="1" step="any"></div>
+  </div>
+  <div class="row"></div>
+    <div class="col">Energy: <input type="range" name="Energy" class="custom-range" min="0" max="1" step="any"></div>
+  </div>
+  <div class="row"></div>
+    <div class="col">Liveness: <input type="range" name="Liveness" class="custom-range" min="0" max="1" step="any"></div>
+  </div>
+  <div class="row"></div>
+    <div class="col">Speechiness: <input type="range" name="Speechiness" class="custom-range" min="0" max="1" step="any"></div>
+  </div>
+  <div class="row"></div>
+    <div class="col">Tempo: <input type="range" name="Tempo" class="custom-range" min="0" max="1" step="any"></div>
+  </div>
+</form>
+{% endif %}
+{% endif %}
+{% endif %}
+{% include 'includes/mobile-nav.html' %}

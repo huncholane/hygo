@@ -1,0 +1,10 @@
+<div id="playlist-friend-container"></div>
+<div class="row">
+  <select class="col form-select" aria-label="Default select example" id="select-friend">
+      <option value="none">Who's that friend!?</option>
+      {% for acc in accounts %}
+        <option value="{{acc.id}}" id="friend-{{acc.id}}" data-username="{{acc.username}}">{{acc.username}}</option>
+      {% endfor %}
+  </select>
+  <button type="button" class="col-md-auto btn btn-success d-none" id="add-friend-button">Add Friend</button>
+</div>

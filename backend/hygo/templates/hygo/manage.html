@@ -1,0 +1,44 @@
+{% include 'includes/header.html' %}
+{% include 'includes/navbar.html' %}
+{% load static %}
+{% if account.access_level >= 1 %}
+<!--Stylesheet-->
+{% csrf_token %}
+<link rel="stylesheet" href="{% static 'hygo/css/slider.css' %}">
+<div class="d-flex justify-content-center">
+<div class="wrapper">
+    <div class="d-flex justify-content-center">{% include 'hygo/playlist_dropdown.html' %}</div>
+    <div class="row form-pad"><input type="text" placeholder="Playlist Name" name="playlist-name" id="name-input"></div>
+    <div class="row form-pad"><input type="text" placeholder="Description" name="description" id="desc-input"></div>
+    {% include 'hygo/playlist_friends.html' %}
+    <div class="d-flex justify-content-center"><h4>Mood</h4></div>
+    <!--Danceability slider-->
+    <div id="danceability"></div>
+    <!--Valence slider-->
+    <div id="valence"></div>
+    <!--Energy slider-->
+    <div id="energy"></div>
+    <!--Tempo slider-->
+    <div id="tempo"></div>
+    <div class="d-flex justify-content-center"><h4>Properties</h4></div>
+    <!--Duration slider-->
+    <div id="duration"></div>
+    <!--Loudness slider-->
+    <div id="loudness"></div>
+    <!--Speechiness slider-->
+    <div id="speechiness"></div>
+    <!--Instrumentalness slider-->
+    <div id="instrumentalness"></div>
+    <div class="d-flex justify-content-center"><h4>Context</h4></div>
+    <!--Liveness slider-->
+    <div id="liveness"></div>
+    <!--Acousticness slider-->
+    <div id="acousticness"></div>
+</div>
+<script>
+    const csrf_token = '{{csrf_token}}'
+</script>
+<script src="{% static 'hygo/js/manage.js' %}"></script>
+</div>
+{% endif %}
+{% include 'includes/mobile-nav.html' %}

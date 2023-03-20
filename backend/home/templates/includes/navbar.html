@@ -1,0 +1,33 @@
+{% if not request.user_agent.is_mobile %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Ghost Systems</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/">Home</a>
+      {% if account %}
+      {% if account.access_level >= 5 %}
+      <a class="nav-item nav-link active" id="charts" href="/charts">Charts</a>
+      <a class="nav-item nav-link disabled" id="arbs" href="/arbs">Arbs</a>
+      <a class="nav-item nav-link active" id="configure" href="/config">Configure</a>
+      <a class="nav-item nav-link disabled" id="tokens" href="#">Tokens</a>
+      {% endif %}
+      {% if account.access_level >= 0 %}
+      <a class="nav-item nav-link active" id="hygo" href="/hygo">Hygo</a>
+      {% endif %}
+      {% endif %}
+      <a class="nav-item nav-link float-right active" id="login" href="/login">
+        {% if account %}
+        Welcome {{ account.user.username }}
+        {% else %}
+        Login
+        {% endif %}
+      </a>
+    </div>
+  </div>
+
+</nav>
+{% endif %}

@@ -1,0 +1,8 @@
+{% extends 'charts/index.html' %}
+{% block title %}Public Hygos{% endblock title %}
+{% block subtitle %}Public Playlists{% endblock subtitle %}
+{% block chart_title %}Ranked by Follows{% endblock chart_title %}
+{% load static %}
+{% block source %}
+{% static 'api/public/charts/playlists.js' %}
+{% endblock  %}

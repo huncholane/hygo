@@ -1,0 +1,39 @@
+{% if request.user_agent.is_mobile %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'includes/css/mobile-nav.css' %}">
+
+<div class="menu">
+  <nav class="menu__nav">
+    <ul class="menu__list r-list">
+      <li class="menu__group">
+        <a href="/" class="menu__link r-link">Home</a>
+      </li>
+      {% if account.access_level >= 5 %}
+      <li class="menu__group">
+        <a href="/charts" class="menu__link r-link">Charts</a>
+      </li>
+      <li class="menu__group">
+        <a href="/arbs" class="menu__link r-link">Arbs</a>
+      </li>
+      {% endif %}
+      <li class="menu__group"><a href="/hygo" class="menu__link r-link">Hygo</a></li>
+      <li class="menu__group">
+        <a href="/login" class="menu__link r-link">{% if account %}
+        Welcome {{ account.user.username }}
+        {% else %}
+        Login
+        {% endif %}</a>
+      </li>
+    </ul>
+  </nav>
+  <button class="menu__toggle r-button" type="button">
+    <span class="menu__hamburger m-hamburger">
+      <span class="m-hamburger__label">
+        <span class="menu__toggle-hint screen-reader">Open menu</span>
+      </span>
+    </span>
+  </button>
+</div>
+
+<script src="{% static 'includes/js/mobile-nav.js' %}"></script>
+{% endif %}

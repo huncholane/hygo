@@ -1,0 +1,19 @@
+<select class="col form-select" aria-label="Default select example" id="select-playlist">
+  <option selected value="new">Create New Playlist</option>
+  {% for playlist in playlists %}
+  <option value="{{playlist.playlist_uri}}" id="{{playlist.playlist_uri}}" data-playlistname="{{playlist.name}}" data-playlistdesc="{{playlist.desc}}"
+  data-mindanceability="{{playlist.min_danceability}}" data-maxdanceability="{{playlist.max_danceability}}"
+  data-minvalence="{{playlist.min_valence}}" data-maxvalence="{{playlist.max_valence}}"
+  data-minenergy="{{playlist.min_energy}}" data-maxenergy="{{playlist.max_energy}}"
+  data-mintempo="{{playlist.min_tempo}}" data-maxtempo="{{playlist.max_tempo}}"
+  data-minduration="{{playlist.min_duration}}" data-maxduration="{{playlist.max_duration}}"
+  data-minloudness="{{playlist.min_loudness}}" data-maxloudness="{{playlist.max_loudness}}"
+  data-minspeechiness="{{playlist.min_speechiness}}" data-maxspeechiness="{{playlist.max_loudness}}"
+  data-mininstrumentalness="{{playlist.min_instrumentalness}}" data-maxinstrumentalness="{{playlist.max_instrumentalness}}"
+  data-minliveness="{{playlist.min_liveness}}" data-maxliveness="{{playlist.max_liveness}}"
+  data-minacousticness="{{playlist.min_acousticness}}" data-maxacousticness="{{playlist.max_acousticness}}"
+  data-friends="{{playlist.friends}}">Update {{playlist.name}}</option> 
+  {% endfor %}
+</select>
+<button type="button" class="col-md-auto btn btn-success" id="change-button">Create Playlist</button>
+<button type="button" class="col-md-auto btn btn-danger d-none" id="delete-playlist-button">Delete Playlist</button>

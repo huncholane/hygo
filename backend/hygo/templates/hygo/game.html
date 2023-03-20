@@ -1,0 +1,34 @@
+{% include 'includes/header.html' %}
+{% include 'includes/navbar.html' %}
+{% load static %}
+<div class="row">
+<div class="col"><img src="{{song.image}}" alt=""></div>
+<div class="col"><a href={{song.song_uri}}>{{song.name}}</a></div>
+<div class="col"><button id="final">Who's that Friend!</button></div>
+</div>
+{% include 'hygo/game_friends.html' %}
+<div id="correctness"></div>
+<script>
+    const game_friends = document.getElementById('select-friend')
+    const final = document.getElementById('final')
+    const correctness = document.getElementById('correctness')
+    game_friends.addEventListener('change', e=>{
+        let answer = document.getElementById(`friend-${game_friends.value}`).innerText
+        console.log(answer)
+        final.innerHTML = `I choose you ${answer}!!!`
+    })
+    final.addEventListener('click', e=> {
+        let answer = document.getElementById(`friend-${game_friends.value}`).innerText
+        let correct = '{{correct.username}}'
+        if (correct == answer) {
+            correctness.style.backgroundColor = 'green'
+            let numPlays = '{{song.num_plays}}'
+            let numSkips = '{{song.num_skips}}'
+            correctness.innerText = `You're Right!!! It's ${answer} with ${numPlays} plays and ${numSkips} skips Refresh to play again`
+        } else {
+            correctness.innerText = `You're wrong!`
+            correctness.style.backgroundColor = 'red'
+        }
+    })
+</script>
+{% include 'includes/mobile-nav.html' %}
