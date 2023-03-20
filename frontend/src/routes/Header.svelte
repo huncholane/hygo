@@ -11,7 +11,6 @@
   <div class="cluster">
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/contact">Contact</a></li>
@@ -45,37 +44,8 @@
     background-color: var(--color-bg-0);
   }
 
-  .corner {
-    width: 3em;
-    height: 3em;
-  }
-
-  .corner a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-
-  .corner img {
-    width: 2em;
-    height: 2em;
-    object-fit: contain;
-  }
-
   nav {
     display: flex;
-  }
-
-  svg {
-    width: 2em;
-    height: 3em;
-    display: block;
-  }
-
-  path {
-    fill: var(--background);
   }
 
   ul {
@@ -94,18 +64,6 @@
   li {
     position: relative;
     height: 100%;
-  }
-
-  li[aria-current="page"]::before {
-    --size: 6px;
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-    top: 0;
-    left: calc(50% - var(--size));
-    border: var(--size) solid transparent;
-    border-top: var(--size) solid var(--color-theme-1);
   }
 
   nav a {
