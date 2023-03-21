@@ -4,7 +4,7 @@
 
 <div class="left">
   <!-- <img class="soundwaves" src="/brand/reduced/soundwaves.png" alt="" /> -->
-  <img class="soundwaves" src="/stock/alba_user.png" alt="" />
+  <img class="soundwaves" src="/stock/johnwick2.png" alt="" />
   <div class="info-container">
     <a href="https://www.spotify.com/us/premium/">
       <img
@@ -58,7 +58,7 @@
     flex-direction: column;
   }
   .soundwaves {
-    min-width: 550px;
+    width: 550px;
     border-radius: 10px;
   }
 </style>

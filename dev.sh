@@ -29,6 +29,7 @@ function dev () {
     # tunnel the server
     local start=`pwd`
     get_to_root
+    ssh $TUNNEL_HOST 'kill -9 $(lsof -t -i:$TUNNEL_PORT)'
     ssh -R $TUNNEL_PORT:localhost:$NGINX_PORT $TUNNEL_HOST -N &
 
     docker compose -f dev-compose.yml up -d 2> /dev/null
