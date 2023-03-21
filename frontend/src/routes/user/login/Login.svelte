@@ -11,7 +11,7 @@
   <h1>Login</h1>
   <form on:submit|preventDefault={handleOnSubmit}>
     <div style="width:100%;text-align:center;">
-      The Good Ole' Username and Password
+      The Good Ol' Username and Password
     </div>
     <label for="">Username</label>
     <input placeholder="Username or email" type="text" bind:value={username} />
