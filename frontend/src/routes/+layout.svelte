@@ -26,6 +26,7 @@
 
   main {
     display: flex;
+    min-height: 700px;
     height: 100%;
     padding: 20px;
   }

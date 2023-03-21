@@ -12,6 +12,8 @@
   --color-theme-3: #6d6192;
   --color-theme-4: #69b0c1;
   --color-theme-5: #bef992;
+  --dark-blurry: url("/blurs/dark-blur.png");
+  --light-blurry: url("/svg/light-blurry.svg");
   --color-text: rgb(255, 255, 255);
   --column-width: 42rem;
   --column-margin-top: 4rem;
@@ -24,7 +26,7 @@ body {
   margin: 0;
   background-attachment: fixed;
   background-size: cover;
-  background-image: url("/svg/blurry.svg");
+  background-image: var(--dark-blurry);
   background-position: center;
 }
 

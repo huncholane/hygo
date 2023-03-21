@@ -43,14 +43,11 @@
   }
   .top-song {
     margin: auto;
-    color: black;
   }
   .info {
     margin: auto;
-    color: black;
   }
   .premium-required {
-    color: red;
     margin: auto 5px;
     height: 100px;
   }

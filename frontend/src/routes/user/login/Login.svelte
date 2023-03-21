@@ -14,4 +14,25 @@
     <button>social</button>
     <button>social</button>
   </form>
+  <div class="needs-account">
+    <div>
+      Want to sign up the old school way?
+      <br /><br />
+      <a href="register">Click Here</a> to register.
+    </div>
+  </div>
 </div>
+
+<style>
+  .needs-account {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
