@@ -1,12 +1,5 @@
 <script>
-  import { get, getToken } from "../api";
-  import { onMount } from "svelte";
-  let user = null;
-  onMount(() => {
-    get("/api/user/me/").then((data) => {
-      user = data;
-    });
-  });
+  export let user;
 </script>
 
 <header>
@@ -30,7 +23,7 @@
               />
             </a>
           {:else}
-            <a href="/login">Login</a>
+            <a href="/user/login">Login</a>
           {/if}
         </li>
       </ul>

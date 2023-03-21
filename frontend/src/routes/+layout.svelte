@@ -1,13 +1,21 @@
 <script>
+  import { get, getToken } from "../api";
+  import { onMount } from "svelte";
   import Header from "./Header.svelte";
   import "./styles.css";
+  let user;
+  onMount(() => {
+    get("/api/user/me/").then((data) => {
+      user = data;
+    });
+  });
 </script>
 
 <div class="app">
-  <Header />
+  <Header {user} />
 
   <main>
-    <slot />
+    <slot {user} />
   </main>
 
   <footer>

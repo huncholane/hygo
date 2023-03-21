@@ -49,3 +49,7 @@ export async function del(endpoint) {
 export async function patch(endpoint, body) {
   return await request(endpoint, "PATCH", body);
 }
+
+export async function getMe() {
+  return await get("/api/v1/users/me");
+}
