@@ -32,6 +32,7 @@
     height: 100%;
     margin: 0 auto;
     box-sizing: border-box;
+    overflow: auto;
   }
 
   footer {
