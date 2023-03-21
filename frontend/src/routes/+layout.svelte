@@ -1,13 +1,11 @@
 <script>
-  import { get, getToken } from "../api";
+  import { get, getMe, getToken } from "../api";
   import { onMount } from "svelte";
   import Header from "./Header.svelte";
   import "./styles.css";
   let user;
-  onMount(() => {
-    get("/api/user/me/").then((data) => {
-      user = data;
-    });
+  onMount(async () => {
+    user = await getMe();
   });
 </script>
 
