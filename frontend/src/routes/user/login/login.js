@@ -9,4 +9,5 @@ export default async function login(username, password) {
   const expires = new Date(data.expiry);
   document.cookie =
     "token=" + data.token + "; expires=" + expires.toUTCString() + ";";
+  return res;
 }

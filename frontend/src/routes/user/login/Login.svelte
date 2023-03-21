@@ -1,9 +1,19 @@
+<!--
+  Redirects
+  https://kit.svelte.dev/docs/modules#$app-navigation
+  -->
 <script>
   import login from "./login.js";
+  import { redirect } from "@sveltejs/kit";
+  import { goto } from "$app/navigation";
   let username = "";
   let password = "";
   function handleOnSubmit() {
-    login(username, password);
+    login(username, password).then((res) => {
+      if (res.status === 200) {
+        goto("/user");
+      }
+    });
   }
 </script>
 
