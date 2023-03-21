@@ -14,8 +14,12 @@ function getCookie(name) {
   return cookieValue;
 }
 
+export function getToken() {
+  return getCookie("token");
+}
+
 export default async function request(endpoint, method, body) {
-  return await fetch(endpoint, {
+  let res = await fetch(endpoint, {
     method: method,
     headers: {
       "Content-Type": "application/json",
@@ -23,6 +27,7 @@ export default async function request(endpoint, method, body) {
     },
     body: JSON.stringify(body),
   });
+  return await res.json();
 }
 
 export async function get(endpoint) {

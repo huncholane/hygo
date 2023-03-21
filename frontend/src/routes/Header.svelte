@@ -1,7 +1,12 @@
 <script>
-  import { page } from "$app/stores";
-  import logo from "$lib/images/svelte-logo.svg";
-  import github from "$lib/images/github.svg";
+  import { get, getToken } from "../api";
+  import { onMount } from "svelte";
+  let user = null;
+  onMount(() => {
+    get("/api/user/me/").then((data) => {
+      user = data;
+    });
+  });
 </script>
 
 <header>
@@ -14,12 +19,31 @@
         <li><a href="/about">About</a></li>
         <li><a href="/blog">Blog</a></li>
         <li><a href="/contact">Contact</a></li>
+        <li>
+          {#if user}
+            <!-- content here -->
+            <a href="/user">
+              <img
+                class="avatar"
+                src="https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg"
+                alt="User"
+              />
+            </a>
+          {:else}
+            <a href="/login">Login</a>
+          {/if}
+        </li>
       </ul>
     </nav>
   </div>
 </header>
 
 <style>
+  .avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+  }
   .cluster {
     display: flex;
     flex-direction: row;
@@ -33,7 +57,7 @@
     width: 120px;
   }
   a.brand {
-    height: 60%;
+    height: 40px;
     margin-top: auto;
     margin-bottom: auto;
   }
