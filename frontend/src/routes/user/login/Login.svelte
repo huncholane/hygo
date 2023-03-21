@@ -4,7 +4,6 @@
   -->
 <script>
   import login from "./login.js";
-  import { redirect } from "@sveltejs/kit";
   import { goto } from "$app/navigation";
   let username = "";
   let password = "";
