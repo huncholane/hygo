@@ -51,5 +51,5 @@ export async function patch(endpoint, body) {
 }
 
 export async function getMe() {
-  return await get("/api/v1/users/me");
+  return await get("/api/user/me/");
 }
