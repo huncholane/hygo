@@ -19,6 +19,9 @@ export function getToken() {
 }
 
 export default async function request(endpoint, method, body) {
+  if (!getToken()) {
+    throw new Error("No token found");
+  }
   let res = await fetch(endpoint, {
     method: method,
     headers: {
@@ -27,6 +30,9 @@ export default async function request(endpoint, method, body) {
     },
     body: JSON.stringify(body),
   });
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
   return await res.json();
 }
 
@@ -51,5 +57,10 @@ export async function patch(endpoint, body) {
 }
 
 export async function getMe() {
-  return await get("/api/user/me/");
+  try {
+    return await get("/api/user/me/");
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
 }
