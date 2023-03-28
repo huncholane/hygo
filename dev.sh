@@ -30,7 +30,7 @@ function dev () {
     local start=`pwd`
     get_to_root
     ssh $TUNNEL_HOST 'kill -9 $(lsof -t -i:$TUNNEL_PORT)'
-    ssh -R $TUNNEL_PORT:localhost:$NGINX_PORT $TUNNEL_HOST -N &
+    tunnel $TUNNEL_PORT $NGINX_PORT $TUNNEL_HOST &
 
     docker compose -f dev-compose.yml up -d 2> /dev/null
 
@@ -69,4 +69,8 @@ function preq () {
     cd backend
     pip install -r requirements.txt
     cd $start
+}
+
+function tunnel () {
+    ssh -R $1:localhost:$2 $3 -N
 }
