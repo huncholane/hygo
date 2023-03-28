@@ -18,7 +18,7 @@ export function getToken() {
   return getCookie("token");
 }
 
-export default async function request(endpoint, method, body) {
+export async function request_json(endpoint, method, body) {
   if (!getToken()) {
     throw new Error("No token found");
   }
@@ -37,23 +37,23 @@ export default async function request(endpoint, method, body) {
 }
 
 export async function get(endpoint) {
-  return await request(endpoint, "GET");
+  return await request_json(endpoint, "GET");
 }
 
 export async function post(endpoint, body) {
-  return await request(endpoint, "POST", body);
+  return await request_json(endpoint, "POST", body);
 }
 
 export async function put(endpoint, body) {
-  return await request(endpoint, "PUT", body);
+  return await request_json(endpoint, "PUT", body);
 }
 
 export async function del(endpoint) {
-  return await request(endpoint, "DELETE");
+  return await request_json(endpoint, "DELETE");
 }
 
 export async function patch(endpoint, body) {
-  return await request(endpoint, "PATCH", body);
+  return await request_json(endpoint, "PATCH", body);
 }
 
 export async function getMe() {

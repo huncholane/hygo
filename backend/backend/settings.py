@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 DEBUG = True
 CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = ['https://ghostsystems.io',
-                        'https://127.0.0.1', 'https://localhost']
+                        'https://127.0.0.1', 'https://localhost', 'https://hygo.online', 'http://localhost:8004']
 
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'knox.auth.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ]
 }
