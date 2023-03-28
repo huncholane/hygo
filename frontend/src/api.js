@@ -1,3 +1,7 @@
+import { writable } from "svelte/store";
+
+export const user = writable(null);
+
 function getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -58,9 +62,33 @@ export async function patch(endpoint, body) {
 
 export async function getMe() {
   try {
-    return await get("/api/user/me/");
+    let data = await get("/api/user/me/");
+    user.set(data);
+    console.log(data);
+    return data;
   } catch (e) {
     console.log(e);
     return null;
   }
+}
+
+export async function login(username, password) {
+  let res = await fetch("/api/auth/login/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Basic " + btoa(username + ":" + password),
+    },
+  });
+  console.log(res);
+  let data = await res.json();
+  const expires = new Date(data.expiry);
+  document.cookie =
+    "token=" + data.token + "; expires=" + expires.toUTCString() + ";";
+  getMe();
+}
+
+export async function logout() {
+  await post("/api/user/logout/");
+  user.set(null);
 }

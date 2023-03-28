@@ -3,23 +3,23 @@
   https://kit.svelte.dev/docs/modules#$app-navigation
   -->
 <script>
-  import login from "./login.js";
+  import { login, user } from "../../../api";
   import { goto } from "$app/navigation";
+  let userVal;
   let username = "";
   let password = "";
+  user.subscribe((val) => {
+    userVal = val;
+  });
   function handleOnSubmit() {
-    login(username, password).then((res) => {
-      if (res.status === 200) {
-        goto("/user");
-      }
-    });
+    login(username, password);
   }
 </script>
 
 <div class="card">
   <h1>Login</h1>
   <form on:submit|preventDefault={handleOnSubmit}>
-    <div style="width:100%;text-align:center;">
+    <div style="width:100%;text-align:center;padding-bottom:20px;">
       The Good Ol' Username and Password
     </div>
     <label for="">Username</label>
@@ -35,23 +35,8 @@
     Login or Register with Social Media
   </div>
   <form style="display:flex;justify-content:space-around;" action="">
-    <a href="https://google.com">
-      <img
-        src="https://cdn.freebiesupply.com/logos/large/2x/google-icon-logo-png-transparent.png"
-        alt="Google"
-      />
-    </a>
-    <a href="https://facebook.com">
-      <img
-        src="https://www.edigitalagency.com.au/wp-content/uploads/Facebook-logo-blue-circle-large-transparent-png.png"
-        alt="Facebook"
-      />
-    </a>
     <a href="https://spotify.com">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Spotify_icon.svg/1982px-Spotify_icon.svg.png"
-        alt="Spotify"
-      />
+      <img src="/img/reference/spotify.png" alt="Spotify" />
     </a>
   </form>
   <div class="needs-account">
@@ -77,6 +62,7 @@
   .card {
     display: flex;
     flex-direction: column;
+    padding-bottom: 20px;
   }
 
   .flex {

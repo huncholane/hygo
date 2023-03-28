@@ -1,33 +1,48 @@
 <script>
-  let open = false;
+  import { user } from "../api";
+  let isOpen = false;
+  let userVal;
+  user.subscribe((val) => {
+    userVal = val;
+  });
 </script>
 
 <header>
   <nav>
-    <a href="/">
+    <a href="/" on:click={() => (isOpen = false)}>
       <img src="/img/brand/inverted.png" height="40" alt="" />
     </a>
-    <button on:click={() => (open = !open)}>
-      <img
-        class="avatar"
-        src="/img/avatars/hygo_ghost.png"
-        height="40"
-        alt=""
-      />
-    </button>
+    <img
+      class="avatar"
+      src="/img/avatars/hygo_ghost.png"
+      height="40"
+      alt="user-icon"
+      on:click={() => (isOpen = !isOpen)}
+      on:keydown={() => (isOpen = !isOpen)}
+    />
   </nav>
 </header>
-<nav />
-{#if open}
-  <nav class="container">
+{#if isOpen}
+  <div class="container">
     <!-- content here -->
-    <nav class="flex">
+    <div class="flex">
+      {#if userVal}
+        <!-- content here -->
+        Welcome back {userVal.username}
+      {:else}
+        <!-- else content here -->
+        <a href="/user/login" on:click={() => (isOpen = false)}>Login</a>
+      {/if}
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
       <a href="/login">Login</a>
       <a href="/register">Register</a>
-    </nav>
-  </nav>
+      {#if userVal}
+        <!-- content here -->
+        <button>Logout</button>
+      {/if}
+    </div>
+  </div>
 {/if}
 
 <style>
@@ -48,27 +63,31 @@
     border-radius: 50%;
     border: 1px solid #000000;
   }
+  img.avatar:hover {
+    cursor: pointer;
+  }
   nav {
     margin: auto 10px;
     display: flex;
     justify-content: space-between;
     width: 100%;
+    /* height: 48px; */
   }
   button {
     background: none;
     border: none;
     cursor: pointer;
   }
-  nav.container {
+  div.container {
     width: 100%;
     height: 100vh;
-    background-color: black;
+    background-color: var(--global-theme);
     position: fixed;
     top: var(--nav-height);
     padding: 0px;
     margin: 0px;
   }
-  nav.flex {
+  div.flex {
     display: flex;
     flex-direction: column;
     justify-content: start;
