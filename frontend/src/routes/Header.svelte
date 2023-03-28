@@ -1,103 +1,80 @@
 <script>
-  export let user;
+  let open = false;
 </script>
 
 <header>
-  <a class="brand" href="/">
-    <div class="brand" />
-  </a>
-  <div class="cluster">
-    <nav>
-      <ul>
-        <li><a href="/about">About</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/contact">Contact</a></li>
-        <li>
-          {#if user}
-            <!-- content here -->
-            <a href="/user">
-              <img
-                class="avatar"
-                src="https://static.vecteezy.com/system/resources/thumbnails/005/545/335/small/user-sign-icon-person-symbol-human-avatar-isolated-on-white-backogrund-vector.jpg"
-                alt="User"
-              />
-            </a>
-          {:else}
-            <a href="/user/login">Login</a>
-          {/if}
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav>
+    <a href="/">
+      <img src="/img/brand/inverted.png" height="40" alt="" />
+    </a>
+    <button on:click={() => (open = !open)}>
+      <img
+        class="avatar"
+        src="/img/avatars/hygo_ghost.png"
+        height="40"
+        alt=""
+      />
+    </button>
+  </nav>
 </header>
+<nav />
+{#if open}
+  <nav class="container">
+    <!-- content here -->
+    <nav class="flex">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    </nav>
+  </nav>
+{/if}
 
 <style>
-  .avatar {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-  }
-  .cluster {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .brand {
-    background-image: url("/brand/inverted.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-left: 4px;
-    width: 120px;
-  }
-  a.brand {
-    height: 40px;
-    margin-top: auto;
-    margin-bottom: auto;
+  :root {
+    --nav-height: 60px;
+    --nav-spacing: 15px;
   }
   header {
+    background: var(--color-bg-0);
     display: flex;
     justify-content: space-between;
-    height: 80px;
-    background-color: var(--color-bg-0);
+    align-items: center;
+    height: var(--nav-height);
+    position: fixed;
+    width: 100%;
   }
-
+  img.avatar {
+    border-radius: 50%;
+    border: 1px solid #000000;
+  }
   nav {
+    margin: auto 10px;
     display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
-
-  ul {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    height: 3em;
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  nav.container {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    position: fixed;
+    top: var(--nav-height);
+    padding: 0px;
+    margin: 0px;
+  }
+  nav.flex {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: start;
     align-items: center;
-    list-style: none;
-    background: var(--background);
-    background-size: contain;
-  }
-
-  li {
-    position: relative;
     height: 100%;
-  }
-
-  nav a {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    padding: 0 0.5rem;
-    color: var(--color-text);
-    font-weight: 700;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    transition: color 0.2s linear;
-  }
-
-  a:hover {
-    color: var(--color-theme-1);
+    gap: var(--nav-spacing);
+    padding-top: var(--nav-spacing);
   }
 </style>
