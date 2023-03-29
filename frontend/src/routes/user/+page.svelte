@@ -25,13 +25,16 @@
 </div>
 
 <style>
-  h1.connected {
+  div.connected {
     font-size: 2rem;
     color: var(--color-theme-2);
   }
   .main {
     text-align: center;
     font-size: 1.5rem;
+  }
+  button:hover {
+    cursor: pointer;
   }
   button {
     background-color: var(--color-theme-2);

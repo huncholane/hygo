@@ -18,6 +18,12 @@ function getCookie(name) {
   return cookieValue;
 }
 
+function deleteCookie(name) {
+  if (getCookie(name)) {
+    document.cookie = name + "=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  }
+}
+
 export function getToken() {
   return getCookie("token");
 }
@@ -93,5 +99,6 @@ export async function logout() {
       Authorization: "Bearer " + getCookie("token"),
     },
   });
+  deleteCookie("token");
   user.set(null);
 }
