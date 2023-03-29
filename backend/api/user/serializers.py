@@ -22,13 +22,20 @@ class AccountSerializer(serializers.ModelSerializer):
 
 class SingleUserSerializer(serializers.ModelSerializer):
     account = AccountSerializer()
+    spotify = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = User
         fields = ('username', 'email', 'password',
-                  'first_name', 'last_name', 'account')
+                  'first_name', 'last_name', 'account', 'spotify')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
+
+    def get_spotify(self, obj):
+        try:
+            return obj.account.sp.me()
+        except:
+            return None

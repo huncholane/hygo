@@ -10,7 +10,7 @@
   let username = "";
   let password = "";
   user.subscribe((val) => {
-    // if (val) goto("/user");
+    if (val) goto("/user");
   });
   function handleOnSubmit() {
     login(username, password);

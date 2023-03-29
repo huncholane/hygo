@@ -1,4 +1,5 @@
 <script>
+  import { getMe } from "../api";
   import { user, logout } from "../api";
   let isOpen = false;
   let userVal;
@@ -28,7 +29,7 @@
     <div class="flex">
       {#if userVal}
         <!-- content here -->
-        Welcome back {userVal.username}
+        <a href="/user">Welcome back, {userVal.username}</a>
       {:else}
         <!-- else content here -->
         <a href="/user/login" on:click={() => (isOpen = false)}>Login</a>

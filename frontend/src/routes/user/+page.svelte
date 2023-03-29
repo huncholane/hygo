@@ -2,13 +2,9 @@
   import { getMe, get } from "../../api";
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
+  import { user } from "../../api";
 
-  onMount(async () => {
-    let { redirect } = await (
-      await fetch("/api/spotify/redirect/", {
-        method: "POST",
-      })
-    ).json();
-    goto(redirect);
+  user.subscribe((user) => {
+    console.log(user);
   });
 </script>

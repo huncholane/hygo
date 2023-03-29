@@ -26,5 +26,12 @@ class Account(models.Model):
                                redirect_uri=SPOTIFY_REDIRECT_URI, scope=SPOTIFY_SCOPE, cache_handler=cache_handler)
         return Spotify(auth_manager=sp_auth)
 
+    def login_sp(self, code):
+        cache_handler = AccountCacheHandler(self)
+        sp_auth = SpotifyOAuth(client_id=SPOTIFY_CLIENT_ID, client_secret=SPOTIFY_CLIENT_SECRET,
+                               redirect_uri=SPOTIFY_REDIRECT_URI, scope=SPOTIFY_SCOPE, cache_handler=cache_handler)
+        sp_auth.get_access_token(code)
+        return self.sp
+
     def __str__(self):
         return f'{self.user.username} Account'

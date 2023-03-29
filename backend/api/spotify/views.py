@@ -4,6 +4,7 @@ from backend.settings import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_R
 from spotipy.oauth2 import SpotifyOAuth
 from django.shortcuts import redirect
 from rest_framework.permissions import AllowAny
+from django.contrib.auth.models import User
 
 
 class RedirectView(APIView):
@@ -19,6 +20,10 @@ class RedirectView(APIView):
 
     def get(self, request):
         """Handles the redirect from Spotify's authorization page"""
-        print(request.GET)
-        print('Hello World')
-        return Response('Hello World')
+        code = request.GET.get('code')
+        print(request.user)
+        user = User.objects.get(username='huncho')
+        print(code)
+        sp = user.account.login_sp(code)
+        # print(sp.me())
+        return Response(code)
