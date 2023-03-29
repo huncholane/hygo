@@ -3,7 +3,7 @@
   https://kit.svelte.dev/docs/modules#$app-navigation
   -->
 <script>
-  import { login, user } from "../../../api";
+  import { login, user, post } from "../../../api";
   import { goto } from "$app/navigation";
 
   let userVal;
@@ -15,6 +15,16 @@
   function handleOnSubmit() {
     login(username, password);
   }
+  const sendRedirect = async () => {
+    const res = await fetch("/api/spotify/redirect/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    goto(data.redirect);
+  };
 </script>
 
 <div class="card">
@@ -35,11 +45,11 @@
   <div style="width:100%;text-align:center;">
     Login or Register with Social Media
   </div>
-  <form style="display:flex;justify-content:space-around;" action="">
-    <a href="https://spotify.com">
+  <div class="social">
+    <button on:click|preventDefault={sendRedirect}>
       <img src="/img/reference/spotify.png" alt="Spotify" />
-    </a>
-  </form>
+    </button>
+  </div>
   <div class="needs-account">
     <div>
       Want to sign up the old school way?
@@ -82,5 +92,10 @@
     background-color: #203582;
     color: white;
     cursor: pointer;
+  }
+  div.social {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0px;
   }
 </style>
