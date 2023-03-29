@@ -15,9 +15,9 @@ class Account(models.Model):
     private = models.BooleanField(default=True)
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='account')
-    access_token = models.CharField(max_length=255, null=True)
-    refresh_token = models.CharField(max_length=255, null=True)
-    token_expires_at = models.IntegerField(null=True)
+    access_token = models.CharField(max_length=255, null=True, blank=True)
+    refresh_token = models.CharField(max_length=255, null=True, blank=True)
+    token_expires_at = models.IntegerField(null=True, blank=True)
     sp_id = models.CharField(null=True, max_length=30)
 
     @property
