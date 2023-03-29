@@ -18,6 +18,7 @@ class Account(models.Model):
     access_token = models.CharField(max_length=255, null=True)
     refresh_token = models.CharField(max_length=255, null=True)
     token_expires_at = models.IntegerField(null=True)
+    sp_id = models.CharField(null=True, max_length=30)
 
     @property
     def sp(self):
