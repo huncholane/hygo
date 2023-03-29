@@ -1,5 +1,5 @@
 <script>
-  import { user } from "../api";
+  import { user, logout } from "../api";
   let isOpen = false;
   let userVal;
   user.subscribe((val) => {
@@ -39,7 +39,7 @@
       <a href="/register">Register</a>
       {#if userVal}
         <!-- content here -->
-        <button>Logout</button>
+        <button on:click={logout}>Logout</button>
       {/if}
     </div>
   </div>

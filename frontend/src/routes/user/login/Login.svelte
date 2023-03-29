@@ -5,11 +5,12 @@
 <script>
   import { login, user } from "../../../api";
   import { goto } from "$app/navigation";
+
   let userVal;
   let username = "";
   let password = "";
   user.subscribe((val) => {
-    userVal = val;
+    // if (val) goto("/user");
   });
   function handleOnSubmit() {
     login(username, password);
@@ -63,6 +64,7 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
+    padding-left: 0px;
   }
 
   .flex {

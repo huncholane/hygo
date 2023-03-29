@@ -21,6 +21,7 @@ input {
   border: none;
   margin-bottom: 10px;
   padding-left: 8px;
+  box-sizing: border-box;
 }
 label {
   margin: 2px;

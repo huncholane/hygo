@@ -64,10 +64,8 @@ export async function getMe() {
   try {
     let data = await get("/api/user/me/");
     user.set(data);
-    console.log(data);
     return data;
   } catch (e) {
-    console.log(e);
     return null;
   }
 }
@@ -80,7 +78,6 @@ export async function login(username, password) {
       Authorization: "Basic " + btoa(username + ":" + password),
     },
   });
-  console.log(res);
   let data = await res.json();
   const expires = new Date(data.expiry);
   document.cookie =
@@ -89,6 +86,12 @@ export async function login(username, password) {
 }
 
 export async function logout() {
-  await post("/api/user/logout/");
+  await fetch("/api/auth/logout/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + getCookie("token"),
+    },
+  });
   user.set(null);
 }
