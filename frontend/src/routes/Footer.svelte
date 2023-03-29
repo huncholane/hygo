@@ -3,8 +3,7 @@
     <div class="footer-left">
       <div class="footer-left-info">
         Hygo Since 2022,
-        <a href="https://ghostystems.io">Ghost Systems LLC</a> -
-        <a href="mailto:huncho@ghostsystems.io">huncho@ghostystems.io</a>
+        <a href="https://ghostystems.io">Ghost Systems LLC</a>
       </div>
     </div>
     <img class="icon" src="https://github.com/favicon.ico" alt="" />

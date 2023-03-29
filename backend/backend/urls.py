@@ -23,6 +23,7 @@ favicon_view = RedirectView.as_view(
     url=settings.STATIC_URL+'images/favicon.ico', permanent=True)
 
 urlpatterns = [
+    path('admin/logs/', include('django_logs.urls')),
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('hygo/', include('hygo.urls')),

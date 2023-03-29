@@ -29,15 +29,13 @@
     <div class="flex">
       {#if userVal}
         <!-- content here -->
-        <a href="/user">Welcome back, {userVal.username}</a>
+        <a href="/user" on:click={() => (isOpen = !isOpen)}
+          >Welcome back, {userVal.username}</a
+        >
       {:else}
         <!-- else content here -->
         <a href="/user/login" on:click={() => (isOpen = false)}>Login</a>
       {/if}
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
       {#if userVal}
         <!-- content here -->
         <button on:click={logout}>Logout</button>

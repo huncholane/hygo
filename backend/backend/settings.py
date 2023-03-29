@@ -52,8 +52,42 @@ INSTALLED_APPS = [
     'django_user_agents',
     'rest_framework',
     'backend',
-    'knox'
+    'knox',
+    'django_logs'
 ]
+
+# Setup file logs
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(message)s',
+        },
+        'html': {
+            'format': '<tr><td>{levelname}</td><td>{asctime}</td><td>{module}</td><td>{message}</td></tr>',
+            'class': 'django_logs.formatters.TermEscapeCodeFormatter',
+            'style': '{'
+        }
+    },
+    'handlers': {
+        'memory': {
+            'level': 'INFO',
+            'class': 'django_logs.handlers.MemoryLogHandler',
+            'formatter': 'html',
+        },
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console', 'memory'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -94,8 +128,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'knox.auth.TokenAuthentication',
-        # 'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     ]
 }
 
