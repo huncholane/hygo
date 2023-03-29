@@ -9,7 +9,7 @@
 # SPOTIFY_REDIRECT_URI
 # SPOTIFY_CLIENT_ID
 # SPOTIFY_CLIENT_SECRET
-# IS_DOCKERR
+# IS_DOCKER
 set -a
 source .env
 set +a
@@ -29,8 +29,6 @@ function dev () {
     # tunnel the server
     local start=`pwd`
     get_to_root
-    ssh $TUNNEL_HOST 'kill -9 $(lsof -t -i:$TUNNEL_PORT)'
-    tunnel $TUNNEL_PORT $NGINX_PORT $TUNNEL_HOST &
 
     docker compose -f dev-compose.yml up -d 2> /dev/null
 
