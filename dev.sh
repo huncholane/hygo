@@ -24,6 +24,10 @@ function get_to_root () {
     done
 }
 
+function dtest () {
+    docker compose down --remove-orphans
+    docker compose up --build
+}
 
 function dev () {
     # tunnel the server
