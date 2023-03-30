@@ -153,7 +153,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'USER': 'postgres',
         'NAME': 'postgres',
-        'PASSWORD': 'postgres',
+        'HOST': 'localhost'
     } if os.getenv('IS_DOCKER') else {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR/'db.sqlite3',
@@ -209,7 +209,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Spotify API
-SPOTIFY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
-SPOTIFY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
-SPOTIFY_REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
-SPOTIFY_SCOPE = 'user-read-currently-playing user-read-playback-state user-read-recently-played user-top-read'
+SPOTIFY_SCOPE = 'user-read-currently-playing user-read-playback-state user-read-recently-played user-top-read user-read-email'

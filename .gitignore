@@ -164,3 +164,5 @@ postgres
 **/sp_cache
 **/dump.json
 backend/static
+*.env
+backend/*.json

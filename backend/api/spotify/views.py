@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from backend.settings import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REDIRECT_URI, SPOTIFY_SCOPE
+from backend.settings import SPOTIFY_SCOPE
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy.client import Spotify
 from django.shortcuts import redirect
@@ -10,6 +10,8 @@ from django.contrib.auth import login
 from home.models import Account
 import string
 import random
+import logging
+log = logging.getLogger('django')
 
 
 def random_string(len):
@@ -26,23 +28,24 @@ def create_sp_user(me, access_token):
         last_name=last_name,
         password=random_string(20)
     )
-    account = Account.objects.create(
+    Account.objects.create(
         user=user,
         sp_id=me['id'],
         access_token=access_token['access_token'],
         refresh_token=access_token['refresh_token'],
         token_expires_at=access_token['expires_at']
     )
+    return user
 
 
 class RedirectView(APIView):
-    sp_auth = SpotifyOAuth(SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET,
-                           SPOTIFY_REDIRECT_URI, scope=SPOTIFY_SCOPE)
+    sp_auth = SpotifyOAuth(scope=SPOTIFY_SCOPE)
     permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
         """Redirects to Spotify's authorization page"""
         url = self.sp_auth.get_authorize_url()
+        log.info(f'Spotify authorization for {request.user}')
         if request.user != AnonymousUser():
             login(request, request.user)
         return Response({'redirect': url})
@@ -59,6 +62,8 @@ class RedirectView(APIView):
             query = User.objects.filter(account__sp_id=me['id'])
             if query:
                 user = query.first()
+                log.info(code)
+                user.account.login_sp(code)
             else:
                 user = create_sp_user(me, access_token)
             login(request, user)

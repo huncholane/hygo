@@ -27,10 +27,11 @@ function get_to_root () {
 
 function dev () {
     # tunnel the server
-    local start=`pwd`
+    local start=$(pwd)
     get_to_root
 
-    docker compose -f dev-compose.yml up -d 2> /dev/null
+    docker compose down --remove-orphans
+    docker compose -f dev-compose.yml up -d
 
     cd frontend && npm run dev &
     cd backend && python manage.py runserver
@@ -43,14 +44,14 @@ function gcom () {
 }
 
 function vsource () {
-    start=`pwd`
+    start=$(pwd)
     get_to_root
     source venv/**/activate
     cd $start
 }
 
 function dj () {
-    start=`pwd`
+    start=$(pwd)
     get_to_root
     cd backend
     python manage.py $@
@@ -62,7 +63,7 @@ function djsecret() {
 }
 
 function preq () {
-    local start=`pwd`
+    local start=$(pwd)
     get_to_root
     cd backend
     pip install -r requirements.txt

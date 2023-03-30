@@ -2,10 +2,13 @@ services:
   web:
     build: .
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      # - ./postgres:/var/lib/postgresql/data
       - ./backend:/backend
+      - ./frontend:/frontend
       - ./nginx:/etc/nginx
     ports:
       - "${NGINX_PORT}:80"
     environment:
       - IS_DOCKER=1
+    env_file:
+      - .env

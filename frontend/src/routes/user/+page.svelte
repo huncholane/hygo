@@ -12,7 +12,7 @@
   {#if spotify}
     <div class="connected">Spotify Connected</div>
   {:else}
-    <button on:click={() => django.post("")}>Link Spotify</button>
+    <button on:click={() => django.spLink()}>Link Spotify</button>
   {/if}
 </div>
 
