@@ -26,11 +26,11 @@ def create_sp_user(me, access_token):
         username=username,
         first_name=first_name,
         last_name=last_name,
-        password=random_string(20)
+        password=random_string(20),
+        email=me['email']
     )
     Account.objects.create(
         user=user,
-        sp_id=me['id'],
         access_token=access_token['access_token'],
         refresh_token=access_token['refresh_token'],
         token_expires_at=access_token['expires_at']
@@ -56,15 +56,18 @@ class RedirectView(APIView):
         if request.user != AnonymousUser():
             request.user.account.login_sp(code)
         else:
-            access_token = self.sp_auth.get_access_token(code)
-            sp = Spotify(access_token['access_token'])
-            me = sp.me()
-            query = User.objects.filter(account__sp_id=me['id'])
-            if query:
-                user = query.first()
-                log.info(code)
-                user.account.login_sp(code)
-            else:
-                user = create_sp_user(me, access_token)
-            login(request, user)
+            self.handle_new_session_user(request, code)
         return redirect('/user')
+
+    def handle_new_session_user(self, request, code):
+        access_token = self.sp_auth.get_access_token(code)
+        sp = Spotify(access_token['access_token'])
+        me = sp.me()
+        query = User.objects.filter(email=me['email'])
+        if query:
+            user = query.first()
+            log.info(code)
+            user.account.login_sp(code)
+        else:
+            user = create_sp_user(me, access_token)
+        login(request, user)
