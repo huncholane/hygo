@@ -7,3 +7,5 @@ services:
       - ./nginx:/etc/nginx
     ports:
       - "${NGINX_PORT}:80"
+    environment:
+      - IS_DOCKER=1

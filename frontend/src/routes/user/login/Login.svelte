@@ -3,7 +3,7 @@
   https://kit.svelte.dev/docs/modules#$app-navigation
   -->
 <script>
-  import { login, user, post } from "../../../api";
+  import { django, user } from "../../../api";
   import { goto } from "$app/navigation";
 
   let userVal;
@@ -13,7 +13,7 @@
     if (val) goto("/user");
   });
   function handleOnSubmit() {
-    login(username, password);
+    django.login(username, password);
   }
   const sendRedirect = async () => {
     const res = await fetch("/api/spotify/redirect/", {
@@ -97,5 +97,9 @@
     display: flex;
     justify-content: center;
     padding: 20px 0px;
+  }
+  .social button {
+    all: unset;
+    cursor: pointer;
   }
 </style>

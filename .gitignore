@@ -162,3 +162,4 @@ sp_conn/sp_cache
 postgres
 **/sandbox.py
 **/sp_cache
+**/dump.json

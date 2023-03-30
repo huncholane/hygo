@@ -37,10 +37,12 @@
     cursor: pointer;
   }
   button {
+    all: unset;
+    cursor: pointer;
     background-color: var(--color-theme-2);
+    height: 50px;
     color: white;
-    height: 40px;
-    padding: 5px 20px;
     border-radius: 10px;
+    padding: 0 20px;
   }
 </style>

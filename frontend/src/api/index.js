@@ -1,32 +1,9 @@
 import { writable } from "svelte/store";
+import cookies from "./cookies";
+import django from "./django";
+import { user } from "./user";
 
-export const user = writable(null);
-
-function getCookie(name) {
-  var cookieValue = null;
-  if (document.cookie && document.cookie !== "") {
-    var cookies = document.cookie.split(";");
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i].trim();
-      // Does this cookie string begin with the name we want?
-      if (cookie.substring(0, name.length + 1) === name + "=") {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
-}
-
-function deleteCookie(name) {
-  if (getCookie(name)) {
-    document.cookie = name + "=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
-  }
-}
-
-export function getToken() {
-  return getCookie("token");
-}
+export { django, user };
 
 export async function request_json(endpoint, method, body) {
   if (!getToken()) {
@@ -36,7 +13,7 @@ export async function request_json(endpoint, method, body) {
     method: method,
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + getCookie("token"),
+      Authorization: "Bearer " + cookies.getCookie("token"),
     },
     body: JSON.stringify(body),
   });
@@ -96,9 +73,9 @@ export async function logout() {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + getCookie("token"),
+      Authorization: "Bearer " + cookies.getCookie("token"),
     },
   });
-  deleteCookie("token");
+  cookies.deleteCookie("token");
   user.set(null);
 }

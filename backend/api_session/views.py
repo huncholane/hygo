@@ -26,5 +26,5 @@ class LoginView(APIView):
 
 class LogoutView(APIView):
     def post(self, request):
-        logout(request.user)
+        logout(request)
         return Response('OK')

@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'django_user_agents',
     'rest_framework',
     'backend',
-    # 'knox',
+    'knox',
     'api_session',
     'django_logs'
 ]
@@ -130,17 +130,17 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        # 'knox.auth.TokenAuthentication',
+        'knox.auth.TokenAuthentication',
     ]
 }
 
 # Knox Settings
 # https://james1345.github.io/django-rest-knox/settings/
-# REST_KNOX = {
-#     'TOKEN_TTL': dt.timedelta(days=1),
-#     'AUTO_REFRESH': True,
-#     'AUTH_HEADER_PREFIX': 'Bearer',
-# }
+REST_KNOX = {
+    'TOKEN_TTL': dt.timedelta(days=1),
+    'AUTO_REFRESH': True,
+    'AUTH_HEADER_PREFIX': 'Bearer',
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

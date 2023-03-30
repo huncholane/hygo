@@ -15,7 +15,7 @@ urlpatterns = [
     path('me/playlsits', playlists.playlists),
     path('me/playlists/playlist', playlists.playlist),
     path('auth/', include('api_session.urls')),
-    # path('auth/', include('rest_framework.urls', namespace='djang_rest')),
+    path('knox/', include('knox.urls')),
     path('user/', include('api.user.urls')),
     path('spotify/', include('api.spotify.urls')),
 ]

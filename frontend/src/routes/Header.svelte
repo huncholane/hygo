@@ -1,6 +1,5 @@
 <script>
-  import { getMe } from "../api";
-  import { user, logout } from "../api";
+  import { user, django } from "../api";
   let isOpen = false;
   let userVal;
   user.subscribe((val) => {
@@ -38,7 +37,7 @@
       {/if}
       {#if userVal}
         <!-- content here -->
-        <button on:click={logout}>Logout</button>
+        <button on:click={() => django.logout()}>Logout</button>
       {/if}
     </div>
   </div>
@@ -94,5 +93,9 @@
     height: 100%;
     gap: var(--nav-spacing);
     padding-top: var(--nav-spacing);
+  }
+  .container button {
+    all: unset;
+    cursor: pointer;
   }
 </style>
