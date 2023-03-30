@@ -1,26 +1,18 @@
 <script>
-  import { getMe, get, post } from "../../api";
-  import { onMount } from "svelte";
-  import { goto } from "$app/navigation";
-  import { user } from "../../api";
+  import { user, django } from "../../api";
   let spotify = null;
 
   user.subscribe((user) => {
     spotify = user?.spotify;
     spotify = false;
   });
-
-  const sendAuth = async () => {
-    const res = await post("/api/spotify/redirect/");
-    goto(res.redirect);
-  };
 </script>
 
 <div class="main">
   {#if spotify}
     <div class="connected">Spotify Connected</div>
   {:else}
-    <button on:click={sendAuth}>Link Spotify</button>
+    <button on:click={() => django.post("")}>Link Spotify</button>
   {/if}
 </div>
 

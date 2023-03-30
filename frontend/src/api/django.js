@@ -83,6 +83,12 @@ class DjangoHandler extends CookieHandler {
     const response = await this.post(url);
     return goto(response.redirect);
   }
+
+  async spLink() {
+    const url = "/api/spotify/redirect/";
+    const response = await this.post(url);
+    return goto(response.redirect);
+  }
 }
 
 export default new DjangoHandler();
