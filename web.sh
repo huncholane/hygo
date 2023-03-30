@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Set up the frontend
-cd /frontend
-npm run build
-
 # Set up the backend
 cd /backend
 python manage.py migrate

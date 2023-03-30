@@ -4,7 +4,6 @@ services:
     volumes:
       # - ./postgres:/var/lib/postgresql/data
       - ./backend:/backend
-      - ./frontend:/frontend
       - ./nginx:/etc/nginx
     ports:
       - "${NGINX_PORT}:80"

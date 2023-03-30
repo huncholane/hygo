@@ -35,7 +35,5 @@ class SingleUserSerializer(serializers.ModelSerializer):
         return user
 
     def get_spotify(self, obj):
-        try:
+        if obj.account.access_token:
             return obj.account.sp.me()
-        except:
-            return None
