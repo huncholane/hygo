@@ -1,6 +1,5 @@
 #!/bin/sh
 
-cd frontend && npm start &
 cd /backend
 python manage.py migrate
 if [ -f "dump.json" ]; then
@@ -8,5 +7,5 @@ if [ -f "dump.json" ]; then
 fi
 python manage.py collectstatic --noinput
 
-cd /frontend && serve
-python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000 &
+cd /frontend && node build

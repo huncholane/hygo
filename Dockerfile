@@ -13,7 +13,7 @@ RUN pip install -r requirements.txt
 # configure node
 COPY ./frontend /frontend
 WORKDIR /frontend
-# RUN npm run build
+RUN npm run build
 
 # configure django
 COPY ./backend /backend

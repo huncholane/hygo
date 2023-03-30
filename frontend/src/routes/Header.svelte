@@ -2,8 +2,14 @@
   import { user, django } from "../api";
   let isOpen = false;
   let userVal;
+  let avatar = "/img/avatars/hygo_ghost.png";
   user.subscribe((val) => {
     userVal = val;
+    if (userVal?.spotify?.images) {
+      avatar = userVal.spotify.images[0].url;
+    } else {
+      avatar = "/img/avatars/hygo_ghost.png";
+    }
   });
 </script>
 
@@ -14,7 +20,7 @@
     </a>
     <img
       class="avatar"
-      src="/img/avatars/hygo_ghost.png"
+      src={avatar}
       height="40"
       alt="user-icon"
       on:click={() => (isOpen = !isOpen)}
