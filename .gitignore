@@ -163,3 +163,4 @@ postgres
 **/sandbox.py
 **/sp_cache
 **/dump.json
+backend/static

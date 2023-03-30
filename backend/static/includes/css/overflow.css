@@ -1,7 +1,0 @@
-.txHash {
-    display: block;
-    width: 5rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}
