@@ -6,6 +6,8 @@ python manage.py migrate
 if [ -f "dump.json" ]; then
     echo "Loading dump.json"
     python manage.py loaddata dump.json
+    cp dump.json backup.json
+    rm dump.json
 fi
 python manage.py collectstatic --noinput
 

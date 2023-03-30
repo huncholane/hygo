@@ -1,4 +1,4 @@
-FROM huncho/web
+FROM web
 
 # install node dependencies
 COPY ./frontend/package.json /frontend/package.json

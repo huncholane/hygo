@@ -24,9 +24,14 @@ function get_to_root () {
     done
 }
 
+function dsh() {
+    docker exec -it hygo-web-1 sh
+}
+
 function dtest () {
     docker compose down --remove-orphans
-    docker compose up --build
+    docker compose build --no-cache
+    docker compose up
 }
 
 function dev () {
