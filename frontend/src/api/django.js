@@ -1,4 +1,5 @@
 import { CookieHandler } from "./cookies";
+import { goto } from "$app/navigation";
 import { user } from "./user";
 
 class DjangoHandler extends CookieHandler {
@@ -67,14 +68,20 @@ class DjangoHandler extends CookieHandler {
   async getMe() {
     const url = "/api/user/me/";
     const response = await this.get(url);
-    user.set(response);
+    if (response.username) user.set(response);
     return response;
   }
 
   async logout() {
     const url = "/api/auth/logout/";
-    const response = await this.post(url, {});
+    await this.post(url, {});
     user.set(null);
+  }
+
+  async spLogin() {
+    const url = "/api/spotify/redirect/";
+    const response = await this.post(url);
+    return goto(response.redirect);
   }
 }
 

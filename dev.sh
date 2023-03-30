@@ -32,8 +32,8 @@ function dev () {
 
     docker compose -f dev-compose.yml up -d 2> /dev/null
 
-    cd backend && python manage.py runserver &
-    cd frontend && npm run dev
+    cd frontend && npm run dev &
+    cd backend && python manage.py runserver
 }
 
 function gcom () {

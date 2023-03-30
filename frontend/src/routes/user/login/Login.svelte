@@ -46,7 +46,7 @@
     Login or Register with Social Media
   </div>
   <div class="social">
-    <button on:click|preventDefault={sendRedirect}>
+    <button on:click|preventDefault={() => django.spLogin()}>
       <img src="/img/reference/spotify.png" alt="Spotify" />
     </button>
   </div>
