@@ -9,7 +9,6 @@ class DjangoHandler extends CookieHandler {
 
   getHeaders() {
     const csrfToken = this.getCSRFToken();
-    console.log(csrfToken);
     return {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -62,13 +61,18 @@ class DjangoHandler extends CookieHandler {
     let response = await this.get(url);
     response = await this.post(url, { username, password });
     const userVal = await this.get("/api/user/me/");
-    console.log(userVal);
     user.set(userVal);
+  }
+
+  async getMe() {
+    const url = "/api/user/me/";
+    const response = await this.get(url);
+    user.set(response);
+    return response;
   }
 
   async logout() {
     const url = "/api/auth/logout/";
-    console.log("logging out");
     const response = await this.post(url, {});
     user.set(null);
   }

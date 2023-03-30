@@ -1,10 +1,10 @@
 <script>
   import { onMount } from "svelte";
-  import { getMe } from "../api";
+  import { django } from "../api";
   import Footer from "./Footer.svelte";
   import Header from "./Header.svelte";
   import "./styles.css";
-  onMount(getMe);
+  onMount(() => django.getMe());
 </script>
 
 <div class="app">
