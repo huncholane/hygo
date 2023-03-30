@@ -1,8 +1,6 @@
 from django.http import HttpResponse
-from django.shortcuts import render
 from sp_conn.playlist_data import add_to_queue
 from home.models import Account
-from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.

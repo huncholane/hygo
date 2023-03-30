@@ -30,5 +30,6 @@ urlpatterns = [
     path('charts/', include('charts.urls')),
     path('api/', include('api.urls')),
     path('me/', include('me.urls')),
-    path('api/auth/', include('knox.urls'))
+    # path('api/knox/', include('knox.urls')),
+    # path('api/auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
